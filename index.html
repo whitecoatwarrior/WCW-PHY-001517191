@@ -1,0 +1,2619 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxH08_vQhw7nqJCy3igwm70zXI2Mwau8CvcIeXdZMF2dFm9bPfgWtP6En4GQZGKte7c/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_BIO_0011 = [
+    {
+        question: "A patient presents with persistent bacterial infections in the oral cavity despite normal hygiene practices. Which salivary component, if deficient, would most directly explain this increased susceptibility?",
+        options: [
+            "Salivary amylase",
+            "Mucin",
+            "Lysozyme and IgA",
+            "Mineral salts"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that saliva contains Lysozyme and immunoglobulin (IgA) to prevent bacterial infection. A deficiency in these components would compromise the oral cavity's defense against bacteria."
+    },
+    {
+        question: "During the process of swallowing, an individual experiences frequent instances of food entering the respiratory tract. A dysfunction in which anatomical structure is the most probable cause?",
+        options: [
+            "Soft palate elevation",
+            "Epiglottis dropping over the glottis",
+            "Larynx rising",
+            "Cardiac sphincter relaxation"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that during swallowing, the larynx rises and the epiglottis drops over the glottis (opening to larynx/trachea), preventing food from entering the respiratory tract. A dysfunction here would directly lead to food entering the respiratory tract."
+    },
+    {
+        question: "An undergraduate student theorizes that the churning action in the stomach is solely responsible for forming chyme. Based on the provided text, what crucial component of chyme formation is overlooked in this theory?",
+        options: [
+            "The addition of pancreatic enzymes",
+            "The role of bile for emulsification",
+            "The combination of food with gastric juice",
+            "The action of salivary amylase"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that mechanical digestion in the stomach involves 'mixing waves (churning) combine food with gastric juice to form chyme'. The theory overlooks the essential combination with gastric juice."
+    },
+    {
+        question: "Consider a scenario where the stomach's parietal cells are severely compromised. Which of the following consequences would directly impede the initial stages of protein digestion in the stomach, despite adequate chief cell function?",
+        options: [
+            "Impaired intrinsic factor secretion, leading to vitamin B12 deficiency",
+            "Reduced mucus production, causing gastric ulceration",
+            "Failure to activate pepsinogen to pepsin",
+            "Inhibition of gastrin release by endocrine cells"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that parietal cells secrete hydrochloric acid (HCl), and HCl activates pepsinogen to pepsin. Without HCl, pepsinogen, even if produced by chief cells, would not convert to its active form, thus impairing protein digestion."
+    },
+    {
+        question: "The efficiency of lipid breakdown into smaller droplets for enzymatic action is primarily attributed to a specific component. Which component, if deficient, would most significantly hinder this initial step in lipid digestion?",
+        options: [
+            "Pancreatic amylase",
+            "Bile salts",
+            "Trypsin",
+            "Gastrin"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that 'Bile salts emulsify fats (reduce surface tension of fat globules, breaking them into smaller droplets to increase surface area for lipase action)'. A deficiency in bile salts would directly hinder this emulsification."
+    },
+    {
+        question: "A patient experiences chronic difficulty digesting complex carbohydrates beyond the oral cavity. Assuming all other digestive functions are normal, which pancreatic secretion would be the most relevant to investigate for potential insufficiency?",
+        options: [
+            "Trypsinogen",
+            "Lipases",
+            "Amylase",
+            "Deoxyribonucleases"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that pancreatic juice contains 'Amylase: Continues polysaccharide digestion'. While salivary amylase initiates it, pancreatic amylase is crucial for continued carbohydrate digestion beyond the mouth."
+    },
+    {
+        question: "An individual's diet is rich in proteins, but they exhibit symptoms of amino acid deficiency. Further investigation reveals a normal dietary intake of proteins and proper initial gastric digestion. The issue likely lies with the activation of which group of pancreatic enzymes?",
+        options: [
+            "Lipases",
+            "Deoxyribonucleases",
+            "Proteolytic enzymes like trypsinogen",
+            "Amylase"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that pancreatic juice contains proteolytic enzymes like trypsinogen, chymotrypsinogen, and procarboxypeptidase which digest proteins into polypeptides, which are further broken down into amino acids. If initial gastric digestion is fine, but amino acid absorption is low, the subsequent breakdown by pancreatic proteolytic enzymes is the likely issue."
+    },
+    {
+        question: "The unique structural modifications within the small intestine are critical for its primary function. A significant reduction in the surface area of the jejunum and ileum would most directly impair which physiological process?",
+        options: [
+            "Initial protein denaturation",
+            "Water reabsorption from indigestible material",
+            "Nutrient absorption efficiency",
+            "Formation of the food bolus"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the small intestine lining contains 'villi' and 'microvilli' which 'dramatically increases the surface area for absorption'. A reduction in this surface area would directly impair nutrient absorption efficiency, as the small intestine is the major site of nutrient absorption."
+    },
+    {
+        question: "A medical condition results in the malfunctioning of the ileocecal junction's sphincter. Which of the following consequences is most likely to occur?",
+        options: [
+            "Premature release of chyme into the duodenum",
+            "Reflux of colonic contents into the small intestine",
+            "Impaired storage and concentration of bile",
+            "Reduced salivary amylase activity"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the 'Ileocecal junction is guarded by a sphincter'. This sphincter prevents reflux from the large intestine into the small intestine. Its malfunction would allow colonic contents to move backward."
+    },
+    {
+        question: "The detoxification of harmful chemicals is a critical function performed by a specific organ. Which organ, if compromised in its detoxification capacity, would lead to an accumulation of such substances in the bloodstream?",
+        options: [
+            "Gallbladder",
+            "Pancreas",
+            "Small intestine",
+            "Liver"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in Textbook theory that the liver's key functions include 'Detoxification of harmful chemicals'. A compromise in this function would lead to the accumulation of toxins."
+    },
+    {
+        question: "A patient exhibits signs of impaired fat-soluble vitamin absorption and reduced fat digestion. Assuming pancreatic enzyme secretion is normal, the issue might stem from insufficient production or delivery of a substance critical for emulsification. Which substance is most likely implicated?",
+        options: [
+            "Hydrochloric acid",
+            "Bile",
+            "Intrinsic factor",
+            "Gastrin"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that 'Bile salts emulsify fats... Aid in absorption of fatty acids'. Bile contains bile salts. If pancreatic enzymes are normal, impaired fat digestion and fat-soluble vitamin absorption (which rely on fat absorption) point to an issue with bile."
+    },
+    {
+        question: "The conversion of amino acids into pyruvic acid and ammonia is a vital metabolic process. Which organ is responsible for this particular function, and what further conversion of ammonia takes place within it?",
+        options: [
+            "Pancreas; ammonia directly excreted",
+            "Small intestine; ammonia incorporated into new proteins",
+            "Liver; ammonia converted to urea via ornithine-arginine cycle",
+            "Kidneys; ammonia converted to uric acid"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Liver's Metabolic role: 'deamination of excess amino acids (producing pyruvic acid and ammonia; ammonia converted to urea via ornithine-arginine cycle)'. This directly identifies the liver and the subsequent conversion."
+    },
+    {
+        question: "An infant consistently experiences automatic emptying of the rectum, unlike an adult. What is the fundamental difference in neural control that accounts for this observation?",
+        options: [
+            "Higher peristaltic waves in the infant's colon",
+            "Lack of conscious control over the external anal sphincter in infants",
+            "Stronger internal anal sphincter reflex in infants",
+            "Increased bicarbonate secretion in the infant's large intestine"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Defaecation Reflex: 'Adults: Can be voluntarily inhibited.' and 'Infants: Automatic emptying due to lack of conscious control.' This directly points to the lack of conscious control in infants."
+    },
+    {
+        question: "A newly developed drug aims to selectively inhibit the secretion of intrinsic factor. Which physiological process would be most immediately and directly affected, even if the individual consumes sufficient amounts of vitamin B12?",
+        options: [
+            "Protein digestion in the stomach",
+            "Absorption of vitamin B12 in the small intestine",
+            "Emulsification of fats in the duodenum",
+            "Activation of pancreatic proteolytic enzymes"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that parietal (oxyntic) cells secrete 'intrinsic factor (binds vitamin B12 for absorption)'. If intrinsic factor secretion is inhibited, vitamin B12 cannot be absorbed, regardless of intake."
+    },
+    {
+        question: "The initial chemical digestion of carbohydrates in the oral cavity is limited to approximately 3-5% of total carbohydrates. Which specific enzymatic activity is responsible for this fractional digestion?",
+        options: [
+            "Pepsin",
+            "Salivary amylase",
+            "Lipase",
+            "Erepsin"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Saliva Composition & Function that saliva contains 'salivary amylase (digests starch to maltose and isomaltose; 3-5% of carbohydrates digested here)'. This directly identifies salivary amylase."
+    },
+    {
+        question: "If the cardiac sphincter fails to function properly, what is the most likely immediate consequence?",
+        options: [
+            "Impaired mixing of chyme in the stomach",
+            "Reflux of stomach contents into the oesophagus",
+            "Reduced secretion of pancreatic juice",
+            "Delayed emptying of the stomach into the duodenum"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the oesophagus connects to the stomach via the 'cardiac opening, guarded by the cardiac sphincter'. If this sphincter fails, stomach contents can flow back into the oesophagus (reflux)."
+    },
+    {
+        question: "The exocrine function of the pancreas involves secreting an alkaline fluid crucial for neutralizing acidic chyme. Which specific component of pancreatic juice is primarily responsible for this neutralization?",
+        options: [
+            "Trypsinogen",
+            "Bicarbonate",
+            "Lipases",
+            "Amylase"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Pancreatic Juice Components: 'Aqueous component (from duct cells): Contains bicarbonate (neutralizes acidic chyme from stomach)'. This identifies bicarbonate as the neutralizing agent."
+    },
+    {
+        question: "A researcher discovers a mutation affecting the ability of epithelial cells in the small intestine to synthesize a specific lipoprotein. This would most critically impair the transport of which macronutrient from the small intestine into the lymphatic system?",
+        options: [
+            "Glucose",
+            "Amino acids",
+            "Recombined fats (as chylomicrons)",
+            "Vitamins K and Biotin"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Absorption in Small Intestine - Lipids: 'recombined into fats, formed into chylomicrons (99% lipid, 1% protein, very low density lipoprotein). Chylomicrons enter lacteals (lymphatic system)'. A defect in forming these lipoproteins would impair fat transport into the lacteals."
+    },
+    {
+        question: "What distinguishes the primary absorptive pathway of digested monosaccharides from that of digested lipids after they have entered the small intestinal epithelial cells?",
+        options: [
+            "Monosaccharides enter the lacteals, lipids enter blood capillaries.",
+            "Monosaccharides are recombined into larger molecules before transport, lipids are not.",
+            "Monosaccharides enter the hepatic portal system, lipids enter the lymphatic system as chylomicrons.",
+            "Monosaccharides require active transport only, lipids require facilitated diffusion only."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Absorption in Small Intestine: 'Carbohydrates... Transported to the liver via the hepatic portal system.' and 'Lipids... Chylomicrons enter lacteals (lymphatic system)'. This highlights the distinct pathways."
+    },
+    {
+        question: "A patient presents with symptoms indicating a severe impairment in blood clotting, specifically related to the formation of necessary blood proteins. Which organ's synthetic function is most likely compromised?",
+        options: [
+            "Gallbladder",
+            "Spleen",
+            "Liver",
+            "Pancreas"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Liver's Key Functions: 'Formation of blood proteins: prothrombin, fibrinogen (for clotting)'. Impaired clotting suggests liver dysfunction."
+    },
+    {
+        question: "The regulation of pancreatic juice secretion is a coordinated hormonal process. Which pair of hormones primarily stimulates the aqueous component (bicarbonate) and the enzymatic component (digestive enzymes) respectively?",
+        options: [
+            "Gastrin and CCK",
+            "Secretin and Gastrin",
+            "CCK and Secretin",
+            "Secretin and CCK"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in Textbook theory under Regulation of Pancreatic Juice Secretion: 'Primarily by hormones secretin (stimulates duct cells to secrete water and bicarbonate) and cholecystokinin (CCK) (stimulates acinar cells to secrete enzymes)'. So, secretin stimulates bicarbonate, and CCK stimulates enzymes."
+    },
+    {
+        question: "Which statement accurately describes a key functional difference between the oesophagus and the stomach?",
+        options: [
+            "The oesophagus primarily absorbs water, while the stomach absorbs nutrients.",
+            "The oesophagus connects the pharynx to the stomach, while the stomach processes food mechanically and chemically.",
+            "The oesophagus has three muscular layers, while the stomach has two.",
+            "The oesophagus secretes digestive enzymes, while the stomach does not."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the 'Oesophagus... Functions as a passageway; no digestion occurs here.' and 'Stomach... Digestion in Stomach: Mechanical (mixing waves) and Chemical (HCl, Pepsin)'. The oesophagus is a passageway, and the stomach performs mechanical and chemical digestion. Option B accurately states this."
+    },
+    {
+        question: "A disruption in the release of acetylcholine from the medulla in response to the taste and smell of food would primarily impact the initial phase of regulation for which digestive organ's secretions?",
+        options: [
+            "Small intestine's villi enzymes",
+            "Pancreas's bicarbonate secretion",
+            "Stomach's gastric juice",
+            "Gallbladder's bile release"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Regulation of Gastric Juice: 'Regulated by nervous system (taste, smell, thoughts of food stimulate medulla -> acetylcholine release -> parietal/chief cells secrete, gastrin release)'. This directly links taste/smell, medulla, acetylcholine, and gastric juice secretion."
+    },
+    {
+        question: "The final breakdown of disaccharides like lactose, maltose, and sucrose into monosaccharides occurs predominantly through enzymes located where?",
+        options: [
+            "In the lumen of the stomach",
+            "Within pancreatic juice delivered to the duodenum",
+            "On the surface of small intestinal epithelial cells (villi/microvilli)",
+            "In saliva within the oral cavity"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Small Intestine - Enzymes secreted by Jejunum/Ileum: 'Lactase: Converts lactose to glucose and galactose. Maltase: Converts maltose to glucose. Sucrase: Converts sucrose to glucose and fructose.' These enzymes are part of the small intestine's own secretions."
+    },
+    {
+        question: "What is the primary distinguishing characteristic of the muscularis layer in the stomach compared to the general Gastrointestinal Tract (GIT) structure?",
+        options: [
+            "The stomach's muscularis lacks the outer longitudinal layer.",
+            "The stomach's muscularis has only two distinct layers, circular and oblique.",
+            "The stomach's muscularis possesses an additional inner oblique layer.",
+            "The stomach's muscularis is entirely composed of involuntary smooth muscle, unlike the GIT."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Stomach - Layers: 'Similar to GIT general layers, but muscularis has three layers (outer longitudinal, middle circular, inner oblique)'. This extra inner oblique layer is the distinguishing feature."
+    },
+    {
+        question: "The production of bile pigments like bilirubin and biliverdin is a direct consequence of the breakdown of what specific blood component?",
+        options: [
+            "Plasma proteins",
+            "White blood cells",
+            "Hemoglobin from dead RBCs",
+            "Platelets"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Liver - Key Functions: 'Forms bile pigments: bilirubin (orange) and biliverdin (green) from hemoglobin breakdown'. This directly links bile pigments to hemoglobin breakdown."
+    },
+    {
+        question: "A surgical procedure removes the gallbladder. Which of the following physiological consequences is the most direct and immediate result?",
+        options: [
+            "Cessation of bile production by the liver",
+            "Impaired concentration and storage of bile",
+            "Complete inability to emulsify fats",
+            "Accelerated absorption of water in the large intestine"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the 'Gallbladder... Stores and concentrates bile produced by the liver'. Removal of the gallbladder would directly impair its storage and concentration function, though the liver would still produce bile."
+    },
+    {
+        question: "An individual experiences unusually loose and watery stools, despite adequate fluid intake and no apparent infection. Assuming digestive enzyme function is normal, a potential dysfunction in which organ's primary role in water balance might be implicated?",
+        options: [
+            "Stomach",
+            "Small intestine",
+            "Large intestine",
+            "Oesophagus"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Large Intestine - Functions: 'Absorption: Reabsorbs water and electrolytes (making stools solid)'. Impaired water reabsorption here would lead to watery stools."
+    },
+    {
+        question: "Which of the following describes the most crucial advantage of the small intestine's anatomical structure involving villi and microvilli?",
+        options: [
+            "It facilitates stronger peristaltic contractions.",
+            "It provides increased surface area for nutrient absorption.",
+            "It allows for additional layers of muscle for churning.",
+            "It secretes protective mucus more effectively."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the small intestine has 'numerous finger-like projections called villi... and further have microvilli on their surface. This structure dramatically increases the surface area for absorption.' This highlights the primary advantage."
+    },
+    {
+        question: "The process of deamination of excess amino acids produces ammonia. What is the immediate fate of this ammonia within the body, according to the provided text?",
+        options: [
+            "It is directly excreted by the kidneys.",
+            "It is converted into urea via the ornithine-arginine cycle.",
+            "It is reabsorbed into the bloodstream for protein synthesis.",
+            "It is used to produce pyruvic acid."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Liver - Metabolic role: 'deamination of excess amino acids (producing pyruvic acid and ammonia; ammonia converted to urea via ornithine-arginine cycle)'. This indicates the conversion of ammonia to urea."
+    },
+    {
+        question: "Which of the following scenarios would lead to an accumulation of undigested starch in the stomach, assuming all other conditions for digestion are optimal after the oral cavity?",
+        options: [
+            "Deficiency in salivary amylase activity",
+            "Excessive secretion of intrinsic factor",
+            "Malfunction of the pyloric sphincter",
+            "Reduced mucus secretion by surface mucous cells"
+        ],
+        correctAnswer: 0,
+        reasoning: "It's mentioned in Textbook theory that 'salivary amylase (digests starch to maltose and isomaltose; 3-5% of carbohydrates digested here)'. If salivary amylase is deficient, starch digestion is initiated poorly, and no further starch digestion occurs in the stomach, leading to its accumulation there."
+    },
+    {
+        question: "What is the primary role of mucin in saliva?",
+        options: [
+            "To activate salivary amylase",
+            "To lubricate food for swallowing",
+            "To prevent bacterial infection",
+            "To aid in taste perception"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Saliva Composition & Function: 'Mucin provides lubrication'. This is its primary role."
+    },
+    {
+        question: "Food is typically propelled through the digestive tract by wave-like muscular contractions. What is the term for the reverse movement of these contractions, which can lead to vomiting?",
+        options: [
+            "Mastication",
+            "Peristalsis",
+            "Antiperistalsis",
+            "Defaecation"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that 'Peristalsis is the wave-like muscular contraction that propels food... Antiperistalsis is the reverse movement, leading to vomiting'."
+    },
+    {
+        question: "Which specific layer of the gastrointestinal tract is responsible for the characteristic mixing and propulsion of food?",
+        options: [
+            "Mucosa",
+            "Submucosa",
+            "Muscularis",
+            "Serosa"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the GIT consists of four major layers, including 'muscularis (muscle layers)'. Peristalsis, which propels food, is a muscular contraction."
+    },
+    {
+        question: "A person develops a condition where their stomach acid pH consistently remains higher than normal (e.g., pH 5-6). What direct consequence on protein digestion would be expected?",
+        options: [
+            "Increased pepsin activity",
+            "Inhibition of pepsinogen activation",
+            "Enhanced bacterial killing",
+            "Faster denaturation of proteins"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that HCl provides a low pH (1-3) which 'activates pepsinogen' to pepsin. A higher pH would inhibit this activation, thus impairing protein digestion."
+    },
+    {
+        question: "What is the primary function of the pyloric sphincter?",
+        options: [
+            "To prevent reflux of stomach contents into the oesophagus",
+            "To regulate the release of chyme into the duodenum",
+            "To control the flow of bile into the small intestine",
+            "To prevent reflux of large intestine contents into the small intestine"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Stomach: 'Pyloric sphincter: Controls the release of chyme into the duodenum'."
+    },
+    {
+        question: "The intestinal enzyme enterokinase plays a critical role in the digestion of proteins by initiating a cascade of activations. What is its direct substrate?",
+        options: [
+            "Chymotrypsinogen",
+            "Procarboxypeptidase",
+            "Trypsinogen",
+            "Pepsinogen"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Pancreatic Juice Components - Proteolytic enzymes: 'Trypsinogen is activated to trypsin by the intestinal enzyme enterokinase'. This directly identifies trypsinogen as the substrate."
+    },
+    {
+        question: "What distinguishes the absorption pathway of amino acids from that of reconstructed fats (chylomicrons) after they are absorbed into the epithelial cells of the small intestine?",
+        options: [
+            "Amino acids enter the lymphatic system, while chylomicrons enter the hepatic portal system.",
+            "Amino acids directly enter the bloodstream, while chylomicrons are first stored in the liver.",
+            "Amino acids enter the hepatic portal system, while chylomicrons enter the lacteals.",
+            "Both amino acids and chylomicrons primarily enter the lacteals."
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Absorption in Small Intestine: 'Proteins: Digested into individual amino acids... enter the hepatic portal system to the liver' and 'Lipids: ...formed into chylomicrons... Chylomicrons enter lacteals (lymphatic system)'. This clearly differentiates their pathways."
+    },
+    {
+        question: "An accumulation of red blood cell breakdown products, leading to jaundice, would primarily indicate a dysfunction in which organ's processing of hemoglobin?",
+        options: [
+            "Kidney",
+            "Gallbladder",
+            "Liver",
+            "Spleen"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Liver - Key Functions: 'Forms bile pigments: bilirubin (orange) and biliverdin (green) from hemoglobin breakdown'. Bilirubin accumulation causes jaundice, pointing to the liver's role."
+    },
+    {
+        question: "The small intestine's ability to maintain an optimal environment for its enzymes is partially due to the continuous neutralization of acidic chyme. Which component from the pancreas is primarily responsible for this neutralization?",
+        options: [
+            "Trypsin",
+            "Bicarbonate",
+            "Lipase",
+            "Secretin"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Pancreatic Juice Components: 'Aqueous component... Contains bicarbonate (neutralizes acidic chyme from stomach)'. This bicarbonate is delivered to the duodenum."
+    },
+    {
+        question: "What is the primary mechanism by which bile salts enhance lipid digestion?",
+        options: [
+            "By chemically breaking down triglycerides into fatty acids.",
+            "By increasing the surface area of fat globules through emulsification.",
+            "By activating pancreatic lipase in the duodenum.",
+            "By directly transporting fatty acids into epithelial cells."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Role of Bile Salts: 'Emulsify fats (reduce surface tension of fat globules, breaking them into smaller droplets to increase surface area for lipase action)'. This is the primary mechanism."
+    },
+    {
+        question: "If an individual develops a chronic condition leading to reduced production of lactase in the small intestine, what specific type of carbohydrate digestion would be most directly affected?",
+        options: [
+            "Polysaccharide digestion in the oral cavity",
+            "Protein digestion in the stomach",
+            "Disaccharide digestion of lactose",
+            "Lipid digestion in the duodenum"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Small Intestine - Enzymes secreted by Jejunum/Ileum: 'Lactase: Converts lactose to glucose and galactose'. A deficiency would specifically impact lactose digestion."
+    },
+    {
+        question: "What is the longest segment of the small intestine?",
+        options: [
+            "Duodenum",
+            "Jejunum",
+            "Ileum",
+            "Pylorus"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Small Intestine: 'duodenum (first part, ~25 cm)... jejunum (~2.5 m)... ileum (~3.5 m)'. The ileum is the longest at ~3.5m."
+    },
+    {
+        question: "The large intestine serves several crucial roles beyond nutrient absorption. Which of the following is explicitly listed as a protective function?",
+        options: [
+            "Initiating carbohydrate digestion",
+            "Forming prothrombin for blood clotting",
+            "Acting as a mucosal barrier against microbial infections",
+            "Secreting intrinsic factor for vitamin B12 absorption"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Large Intestine - Functions: 'Protection: Acts as a mucosal barrier against microbial infections'. This is a direct statement."
+    },
+    {
+        question: "A medication is designed to specifically block the receptors for cholecystokinin (CCK). What direct effect would this have on digestive processes, assuming a fatty meal has been consumed?",
+        options: [
+            "Increased gastric emptying rate into the duodenum",
+            "Reduced contraction of the gallbladder and pancreatic enzyme secretion",
+            "Enhanced secretion of bicarbonate from pancreatic duct cells",
+            "Accelerated synthesis of albumin by the liver"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Regulation of Pancreatic Juice and Gallbladder Secretion: 'CCK (stimulates acinar cells to secrete enzymes)' and 'Secretion Regulation (for bile): Stimulated by CCK (causes gallbladder contraction)'. Blocking CCK would therefore reduce gallbladder contraction and pancreatic enzyme secretion."
+    },
+    {
+        question: "Which component of saliva contributes to its lubricating properties, essential for forming a food bolus and facilitating swallowing?",
+        options: [
+            "Salivary amylase",
+            "Mucin",
+            "Chloride ions",
+            "Lysozyme"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Saliva Composition & Function: 'Mucin provides lubrication'. This is its lubricating role."
+    },
+    {
+        question: "Damage to the enteric nervous system affecting the muscularis layer throughout the gastrointestinal tract would most profoundly impair which fundamental process?",
+        options: [
+            "Chemical digestion by enzymes",
+            "Hormonal regulation of secretions",
+            "Peristaltic movement of food",
+            "Absorption of water in the large intestine"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that 'Peristalsis is the wave-like muscular contraction that propels food through the digestive tract'. The muscularis layer is responsible for these contractions. Damage to its neural control would impair peristalsis."
+    },
+    {
+        question: "What is the approximate pH range of saliva, which is considered favorable for the activity of salivary amylase?",
+        options: [
+            "1.0-3.0",
+            "4.5-5.5",
+            "6.0-7.0",
+            "7.5-8.5"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Saliva Composition & Function: 'pH is 6.00-7.0 (favorable for amylase)'."
+    },
+    {
+        question: "Which of the following is NOT a function of the liver as described in the provided text?",
+        options: [
+            "Synthesis of vitamin A from carotene",
+            "Production of hydrochloric acid",
+            "Deamination of excess amino acids",
+            "Storage of glycogen and vitamins"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that parietal cells in the stomach secrete HCl, not the liver. The other options are listed as liver functions."
+    },
+    {
+        question: "The presence of fatty acids and partially digested proteins in the duodenum triggers the release of a hormone that stimulates gallbladder contraction. Which hormone is this?",
+        options: [
+            "Gastrin",
+            "Secretin",
+            "Cholecystokinin (CCK)",
+            "Insulin"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Gallbladder - Secretion Regulation: 'Stimulated by CCK (causes gallbladder contraction)'. CCK is typically released in response to fats and proteins in the duodenum."
+    },
+    {
+        question: "Which specific component of the small intestinal villus is responsible for absorbing most digested fats, forming chylomicrons?",
+        options: [
+            "Blood capillary network",
+            "Lacteal",
+            "Crypt of Lieberkühn",
+            "Arteriole"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Small Intestine - Lining and Absorption in Small Intestine - Lipids: 'Each villus contains a blood capillary network and a lymph capillary called a lacteal.' and 'Chylomicrons enter lacteals (lymphatic system)'. This directly links lacteals to fat absorption."
+    },
+    {
+        question: "The overall length of the entire Gastrointestinal Tract (GIT) from mouth to anus is approximately:",
+        options: [
+            "3 meters (10 ft)",
+            "9 meters (30 ft)",
+            "15 meters (50 ft)",
+            "25 meters (80 ft)"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Gastrointestinal Tract (GIT) - General Structure and Function: 'The GIT is a continuous tube, approximately 9 meters (30 ft) long'."
+    },
+    {
+        question: "A person develops a condition where the conversion of inactive proteolytic enzymes into their active forms is impaired within the small intestine. This would primarily affect the digestion of which macronutrient?",
+        options: [
+            "Carbohydrates",
+            "Lipids",
+            "Proteins",
+            "Nucleic acids"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Pancreatic Juice Components - Proteolytic enzymes: 'Secreted as inactive forms: trypsinogen, chymotrypsinogen, and procarboxypeptidase' which 'digest proteins into polypeptides'. Impaired activation would directly affect protein digestion."
+    },
+    {
+        question: "Which specific salivary component is essential for activating salivary amylase?",
+        options: [
+            "Mucin",
+            "Lysozyme",
+            "Immunoglobulin (IgA)",
+            "Chloride ions"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in Textbook theory under Saliva Composition & Function: 'Contains mineral salts (e.g., chloride ions to activate amylase)'."
+    },
+    {
+        question: "If the soft palate failed to raise during swallowing, what direct consequence would result?",
+        options: [
+            "Food entering the trachea",
+            "Food entering the nasal cavity",
+            "Inhibition of peristalsis in the oesophagus",
+            "Reduced gastric juice secretion"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Pharynx & Swallowing: 'During swallowing, the soft palate raises to close the nasal cavity'. Failure to raise would allow food into the nasal cavity."
+    },
+    {
+        question: "What primary function is unique to the large intestine compared to the small intestine?",
+        options: [
+            "The major site of nutrient absorption",
+            "Intense chemical digestion of all food classes",
+            "Significant reabsorption of water and electrolytes",
+            "Secretion of powerful proteolytic enzymes"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Large Intestine - Functions: 'Absorption: Reabsorbs water and electrolytes (making stools solid)'. The small intestine is the major site of nutrient absorption, but large intestine specializes in water/electrolyte reabsorption and explicitly states 'No further digestion of nutrients takes place'."
+    },
+    {
+        question: "The production of heparin, a substance that prevents blood clotting, is a specialized function of which organ?",
+        options: [
+            "Pancreas",
+            "Gallbladder",
+            "Liver",
+            "Stomach"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Liver - Key Functions: 'Produces heparin (prevents blood clotting)'."
+    },
+    {
+        question: "The formation of chylomicrons is a crucial step in the absorption and transport of lipids. What is the approximate composition of a chylomicron?",
+        options: [
+            "99% protein, 1% lipid",
+            "50% carbohydrate, 50% protein",
+            "99% lipid, 1% protein",
+            "Mostly nucleic acids with some protein"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Absorption in Small Intestine - Lipids: 'formed into chylomicrons (99% lipid, 1% protein, very low density lipoprotein)'."
+    },
+    {
+        question: "Which enzyme primarily functions to break down polypeptides into dipeptides in the small intestine?",
+        options: [
+            "Pepsin",
+            "Trypsin",
+            "Amino peptidase",
+            "Maltase"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Small Intestine - Enzymes secreted by Jejunum/Ileum: 'Amino peptidase: Splits polypeptides into dipeptides'."
+    },
+    {
+        question: "If the process of deamination in the liver is compromised, what immediate metabolic consequence would be expected regarding excess amino acids?",
+        options: [
+            "Increased glycogen storage",
+            "Reduced fat phosphorylation",
+            "Impaired conversion of ammonia to urea",
+            "Decreased synthesis of albumin"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Liver - Metabolic role: 'deamination of excess amino acids (producing pyruvic acid and ammonia; ammonia converted to urea via ornithine-arginine cycle)'. If deamination is compromised, the subsequent conversion of ammonia to urea would be impaired due to a lack of ammonia formation from amino acids, or if deamination occurs, the *ammonia conversion* step could be compromised leading to ammonia accumulation."
+    },
+    {
+        question: "The oesophagus penetrates which major muscular sheet separating the thoracic and abdominal cavities?",
+        options: [
+            "Peritoneum",
+            "Diaphragm",
+            "Mediastinum",
+            "Pleura"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Oesophagus: 'Penetrates the diaphragm'."
+    },
+    {
+        question: "The initial digestion of proteins begins in the stomach. What specific characteristic of HCl is crucial for initiating this process?",
+        options: [
+            "Its role in forming mucin",
+            "Its ability to neutralize chyme",
+            "Its capacity to denature proteins and activate pepsinogen",
+            "Its function in binding vitamin B12"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Digestion in Stomach - Chemical: 'HCl provides a low pH... which kills bacteria, denatures proteins, and activates pepsinogen'. Denaturation is key for initial protein digestion."
+    },
+    {
+        question: "Which type of cell in the gastric glands is responsible for secreting the inactive precursor to a major protein-digesting enzyme?",
+        options: [
+            "Surface mucous cells",
+            "Parietal (oxyntic) cells",
+            "Chief (zymogenic) cells",
+            "Endocrine cells"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Gastric Gland Cell Types & Secretions: 'Chief (zymogenic) cells: Secrete inactive pepsinogen'."
+    },
+    {
+        question: "The movement of food through the oesophagus is an example of which type of muscular contraction?",
+        options: [
+            "Mastication",
+            "Segmentation",
+            "Peristalsis",
+            "Defaecation reflex"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that 'Peristalsis is the wave-like muscular contraction that propels food through the digestive tract'. The oesophagus uses peristalsis."
+    },
+    {
+        question: "Which of the following describes the correct sequence of major layers from the internal lumen to the external surface of the general GIT structure?",
+        options: [
+            "Serosa, Muscularis, Submucosa, Mucosa",
+            "Mucosa, Muscularis, Submucosa, Serosa",
+            "Mucosa, Submucosa, Muscularis, Serosa",
+            "Submucosa, Mucosa, Serosa, Muscularis"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the GIT 'consists of four major layers: internal mucosa, submucosa, muscularis (muscle layers), and external serosa'. This matches option C."
+    },
+    {
+        question: "The formation of urea from ammonia, a crucial detoxification process, occurs in which organ?",
+        options: [
+            "Kidneys",
+            "Spleen",
+            "Liver",
+            "Pancreas"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Liver - Metabolic role: 'ammonia converted to urea via ornithine-arginine cycle'. This process occurs in the liver."
+    },
+    {
+        question: "If pancreatic lipases are deficient, what would be the most significant direct consequence on digestion?",
+        options: [
+            "Impaired starch digestion in the small intestine",
+            "Reduced protein breakdown in the stomach",
+            "Inefficient breakdown of lipids into free fatty acids and glycerides",
+            "Inability to convert disaccharides into monosaccharides"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Pancreatic Juice Components - Enzymatic component: 'Lipases: Break down lipids into free fatty acids, glycerides, and cholesterol'. A deficiency would impair this breakdown."
+    },
+    {
+        question: "What is the primary role of the hepatic portal system in carbohydrate and protein absorption?",
+        options: [
+            "To transport absorbed fats to the lymphatic system",
+            "To carry monosaccharides and amino acids directly to the liver",
+            "To secrete digestive enzymes into the duodenum",
+            "To store glycogen for later use"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Absorption in Small Intestine: 'Carbohydrates... Transported to the liver via the hepatic portal system.' and 'Proteins... enter the hepatic portal system to the liver'. This confirms its role in transporting these digested products to the liver."
+    },
+    {
+        question: "Which of the following salivary components primarily ensures the activation of salivary amylase?",
+        options: [
+            "Lysozyme",
+            "Mucin",
+            "Chloride ions",
+            "Immunoglobulin (IgA)"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Saliva Composition & Function: 'Contains mineral salts (e.g., chloride ions to activate amylase)'."
+    },
+    {
+        question: "The digestion of DNA and RNA into nucleotides occurs primarily due to which pancreatic enzymes?",
+        options: [
+            "Amylase",
+            "Lipases",
+            "Deoxyribonucleases and ribonucleases",
+            "Proteolytic enzymes"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Pancreatic Juice Components - Enzymatic component: 'Deoxyribonucleases and ribonucleases: Reduce DNA and RNA to nucleotides'."
+    },
+    {
+        question: "If the surface mucous cells of the stomach were to fail, what would be the most immediate and critical consequence for the stomach lining?",
+        options: [
+            "Reduced activation of pepsinogen",
+            "Impaired absorption of vitamin B12",
+            "Increased susceptibility to acid-induced damage",
+            "Ineffective mechanical mixing of food"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Gastric Gland Cell Types & Secretions: 'Surface mucous cells: Secrete mucus (lubricates and protects stomach lining from acid)'. Without this protection, the lining would be vulnerable to HCl."
+    },
+    {
+        question: "The yellowish color of urine and brownish color of feces are partly attributed to the breakdown products of which molecule?",
+        options: [
+            "Glycogen",
+            "Fibrinogen",
+            "Bilirubin",
+            "Urea"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Gallbladder - Bilirubin: 'Results from hemoglobin breakdown; converted by intestinal bacteria into pigments that give feces its brown color, and absorbed/modified pigments contribute to urine's yellowish color'."
+    },
+    {
+        question: "Why is it stated that no digestion occurs in the oesophagus?",
+        options: [
+            "It lacks a muscularis layer for peristalsis.",
+            "It does not secrete digestive enzymes.",
+            "Its pH is too acidic for enzyme activity.",
+            "Food passes through it too quickly for digestion to occur."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Oesophagus: 'Functions as a passageway; no digestion occurs here.' The lack of digestive enzyme secretion is the primary reason for no chemical digestion. While peristalsis occurs, it's not chemical digestion."
+    },
+    {
+        question: "The regulation of gastrin secretion is influenced by nervous system input. What is the immediate effect of acetylcholine release from the medulla on gastrin?",
+        options: [
+            "It directly inhibits gastrin secretion.",
+            "It directly stimulates gastrin release.",
+            "It has no effect on gastrin, only on pepsinogen.",
+            "It activates secretin, which then regulates gastrin."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Regulation of Gastric Juice: 'nervous system (taste, smell, thoughts of food stimulate medulla -> acetylcholine release -> parietal/chief cells secrete, gastrin release)'. The phrase 'gastrin release' after acetylcholine implies stimulation."
+    },
+    {
+        question: "What is the primary product of protein digestion by erepsin in the small intestine?",
+        options: [
+            "Polypeptides",
+            "Dipeptides",
+            "Amino acids",
+            "Glucose"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Small Intestine - Enzymes secreted by Jejunum/Ileum: 'Erepsin: Splits peptides into amino acids'."
+    },
+    {
+        question: "The role of the vermiform appendix is described in the context of which digestive organ?",
+        options: [
+            "Stomach",
+            "Pancreas",
+            "Small intestine",
+            "Large intestine"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in Textbook theory under Large Intestine - Parts: 'caecum (with vermiform appendix ~9 cm long)'. The caecum is part of the large intestine."
+    },
+    {
+        question: "A deficiency in the production of prothrombin and fibrinogen would most directly lead to which physiological impairment?",
+        options: [
+            "Impaired oxygen transport",
+            "Reduced immune response",
+            "Compromised blood clotting",
+            "Ineffective digestion of fats"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Liver - Key Functions: 'Formation of blood proteins: prothrombin, fibrinogen (for clotting)'. A deficiency would directly compromise blood clotting."
+    },
+    {
+        question: "Bile secretion from the liver into the bile ducts is stimulated by which hormone, particularly in response to acidic chyme entering the duodenum?",
+        options: [
+            "CCK",
+            "Gastrin",
+            "Secretin",
+            "Insulin"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Gallbladder - Secretion Regulation: 'secretin (stimulates liver to release bicarbonate into bile)'. Secretin is typically released in response to acidic chyme."
+    },
+    {
+        question: "What is the term for the watery emulsion formed after enzyme action on chyme in the small intestine?",
+        options: [
+            "Bolus",
+            "Gastric juice",
+            "Chyle",
+            "Feces"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory under Small Intestine: 'Chyle: The watery emulsion formed after enzyme action on chyme'."
+    },
+    {
+        question: "Which of the following describes the most significant contribution of bacteria residing in the large intestine?",
+        options: [
+            "Secretion of digestive enzymes for nutrient breakdown",
+            "Synthesis and absorption of certain vitamins",
+            "Neutralization of stomach acid entering the colon",
+            "Initiation of protein digestion"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory under Large Intestine - Functions: 'Absorbs vitamins (Vitamin K and Biotin) produced by gut bacteria'. This highlights their contribution to vitamin synthesis and absorption."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Biology ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-BIO-0011';
+let quizData = quizData_WCW_BIO_0011;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-BIO-0011', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-BIO-0011', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-BIO-0011', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_BIO_0011;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_BIO_0011;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_BIO_0011[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_BIO_0011.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
